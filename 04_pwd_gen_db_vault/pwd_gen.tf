@@ -72,7 +72,7 @@ resource "null_resource" "enc_pwd" {
         # Different for every Encryption method
         # 암호화 방법에 따라 /opt/jboss/bin/enc.sh ${each.key}를 수정. 
         # 예제의 경우, 해당 서버의 /opt/jboss/bin/enc.sh 'TEST'라고 수행 시 TEST를 암호화하는 방식
-        command = "consul kv put pwd/ibanking/enc_pwd/'${each.value}' `sshpass -p '${var.hcv_passwd}' ssh '${var.hcv_user}'@'${var.enc_srv}' '/opt/jboss/bin/enc.sh enc '${nonsensitive(vault_generic_secret.pwd_gen["${each.value}"].data["password"])}''` "
+        command = "CONSUL_HTTP_ADDR=${consul_addr} consul kv put pwd/ibanking/enc_pwd/'${each.value}' `sshpass -p '${var.hcv_passwd}' ssh '${var.hcv_user}'@'${var.enc_srv}' '/opt/jboss/bin/enc.sh enc '${nonsensitive(vault_generic_secret.pwd_gen["${each.value}"].data["password"])}''` "
        # command = "consul kv put pwd/ibanking/enc_pwd/'${each.key}' `sshpass -p '${var.hcv_passwd}' ssh '${var.hcv_user}'@'${var.enc_srv}' '/opt/jboss/bin/enc.sh enc '${each.value}''` "
     }
     depends_on = [vault_generic_secret.pwd_gen]
