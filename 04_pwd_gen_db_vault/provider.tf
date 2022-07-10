@@ -29,5 +29,5 @@ provider "vault" {
   # This will default to using $VAULT_ADDR
   # But can be set explicitly
   # address = "https://vault.example.net:8200"
-  address = var.vault_addr
+ # address = var.vault_addr
 }
