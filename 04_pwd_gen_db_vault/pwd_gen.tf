@@ -75,6 +75,9 @@ resource "null_resource" "enc_pwd" {
        # command = "CONSUL_HTTP_ADDR='${var.consul_addr}' consul kv put pwd/ibanking/enc_pwd/'${each.value}' `sshpass -p '${var.hcv_passwd}' ssh '${var.hcv_user}'@'${var.enc_srv}' '/opt/jboss/bin/enc.sh enc '${nonsensitive(vault_generic_secret.pwd_gen["${each.value}"].data["password"])}''` "
         command = "CONSUL_HTTP_ADDR='${var.consul_addr}' consul kv put pwd/ibanking/enc_pwd/'${each.value}' `sshpass -p '${var.hcv_passwd}' ssh '${var.hcv_user}'@'${var.enc_srv}' '/opt/jboss/bin/enc.sh enc '${vault_generic_secret.pwd_gen["${each.value}"].data["password"]}''` "
        # command = "consul kv put pwd/ibanking/enc_pwd/'${each.key}' `sshpass -p '${var.hcv_passwd}' ssh '${var.hcv_user}'@'${var.enc_srv}' '/opt/jboss/bin/enc.sh enc '${each.value}''` "
+       interpreter = [
+         "/bin/bash", "-c"
+       ]
     }
     depends_on = [vault_generic_secret.pwd_gen]
 }
