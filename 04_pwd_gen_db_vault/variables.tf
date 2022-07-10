@@ -6,9 +6,9 @@ variable "consul_dc" {
   description = "Consul DC"
 }
 
-variable "vault_addr" {
-  description = "Vault Server Address : IP_ADDR:8200"
-}
+#variable "vault_addr" {
+#  description = "Vault Server Address : IP_ADDR:8200"
+#}
 
 variable "hcv_user" {
   description = "HashiCorp Vault OS Account"
