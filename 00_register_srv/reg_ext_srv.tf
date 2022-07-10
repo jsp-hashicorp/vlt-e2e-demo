@@ -33,7 +33,7 @@ resource "consul_service" "srv_ssh" {
   #name    = "counting-service"
   node    = element(local.target_hostname,count.index)
   port    = 22
-  tags = ["channel"]
+  tags = ["channel-${count.index}"]
 
    meta = {
     "app" = "channel"
