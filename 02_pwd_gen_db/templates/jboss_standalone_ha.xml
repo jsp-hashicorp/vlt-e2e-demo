@@ -1,0 +1,26 @@
+<security-domain name="password" cache-type="default">
+    <authentication>
+    <login-module code="org.picketbox.datasource.security.SecureIdentityLoginModule" flag="required"> 
+        <module-option name="username" value="uidbs01h"/> 
+        <module-option name="password" value="U2FsdGVkX1+5dsVWyZ9t0F+XiCzolglHi84io+NQEJ94xEBqLVigR+4YZl+pS93H"/> 
+    </login-module> 
+    </authentication>
+</security-domain>
+
+<security-domain name="db2-password" cache-type="default">
+    <authentication>
+    <login-module code="org.picketbox.datasource.security.SecureIdentityLoginModule" flag="required"> 
+        <module-option name="username" value="uidbs02h"/> 
+        <module-option name="password" value="U2FsdGVkX18PZPEvdTonaHCCyqr6r5AP+7ttAQzR7+vBCJUJeODPJEijuh5cD/+e"/> 
+    </login-module> 
+    </authentication>
+</security-domain>
+
+<security-domain name="db3-password" cache-type="default">
+    <authentication>
+    <login-module code="org.picketbox.datasource.security.SecureIdentityLoginModule" flag="required"> 
+        <module-option name="username" value="uidbs03h"/> 
+        <module-option name="password" value="U2FsdGVkX1/VEZ3dySrfn2YPTKz0bV0ml2mNLbcf2v8XEBvq5P5xh0tt/dZH6+8t"/> 
+    </login-module> 
+    </authentication>
+</security-domain>
